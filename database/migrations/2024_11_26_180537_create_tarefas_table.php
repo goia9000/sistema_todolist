@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('descricao')->nullable();
             $table->string('prioridade', 10);
             $table->tinyInteger('status')->default(0);
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('usuarios');
             $table->dateTime('data_tarefa');
             $table->timestamps();
         });
