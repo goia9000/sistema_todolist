@@ -2,23 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plano;
 use Illuminate\Http\Request;
 
 class PlanoController extends Controller
 {
-    public function index() {
-        return view('admin.planos.index');
+    public function index()
+    {
+        $planos = Plano::all();
+        return view('admin.planos.index', compact('planos'));
     }
-    
-    public function editar() {
+
+    public function editar()
+    {
         return view('admin.planos.editar');
     }
 
-    public function cadastrar() {
+    public function cadastrar()
+    {
         return view('admin.planos.cadastrar');
     }
 
-    public function visualizar() {
+    public function visualizar()
+    {
         return view('admin.planos.visualizar');
     }
 }
