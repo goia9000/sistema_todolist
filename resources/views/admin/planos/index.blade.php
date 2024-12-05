@@ -13,7 +13,7 @@
 
                 <div class="row">
                     <div class="col-12 text-right p-3">
-                        <a class="btn btn-primary" href="cadastrar.html"><i class="fas fa-plus"></i>
+                        <a class="btn btn-primary" href="{{ route('planos.cadastrar') }}"><i class="fas fa-plus"></i>
                             Adicionar</a>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                             <td>{{$plano->titulo}}</td>
                             <td>R$ {{$plano->valor}}</td>
                             <td class="text-center">
-                                <a class="btn btn-sm btn-light" href="visualizar.html">
+                                <a class="btn btn-sm btn-light" href="{{ route('planos.visualizar',['id' =>$plano->id]) }}">
                                     <i class="fas fa-eye"></i>
                                 </a>
                                 <a class="btn btn-sm btn-primary" href="editar.html">
