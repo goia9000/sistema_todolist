@@ -11,19 +11,19 @@
                 <h3 class="text-center m-4">Cadastrar Plano</h3>
 
                 @if ($errors->any())
-                <ul>
-                    @foreach ($errors->all() as $error)
-                     <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 @endif
                 <form action="{{ route('planos.salvarCadastro') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="titulo">Titulo</label>
-                        <input type="titulo" name="titulo" id="titulo" class="form-control" value=""
+                        <input type="titulo" name="titulo" id="titulo" class="form-control" value="{{ old('titulo') }}"
                             placeholder="Digite o titulo" autofocus>
-                        
+
 
                         @error('titulo')
                             <small class="text-danger">{{ $message }}</small>
@@ -44,8 +44,8 @@
                         <label for="descricao">Descrição</label>
                         <textarea name="descricao" id="descricao" class="form-control" rows="5"></textarea>
                         @error('descricao')
-                        <small class="text-danger">{{$message}}</small>
-                    @enderror
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
                     </div>
 
                     <button class="btn btn-primary" type="submit">Salvar</button>

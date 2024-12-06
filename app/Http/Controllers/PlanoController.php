@@ -32,9 +32,27 @@ class PlanoController extends Controller
 
 
 
-    public function editar()
+    public function editar($id)
     {
-        return view('admin.planos.editar');
+        $plano = Plano::findOrFail($id);
+        return view('admin.planos.editar', compact('plano'));
+    }
+
+    public function editarCadastro(Request $request, $id)
+    {
+        $request->validate([
+            'titulo'=> 'required|string|max:100',
+            'descricao'=> 'required',
+            'valor'=> 'required|numeric'
+        ]);
+
+        $plano = Plano::findOrFail($id);
+        $plano->titulo = $request->titulo;
+        $plano->descricao = $request->descricao;
+        $plano->valor = $request->valor;
+        $plano->save();
+
+        return redirect()->route('planos.index')->with(['Mensagem','Cadastro editado com sucesso!']);
     }
 
     public function cadastrar()
